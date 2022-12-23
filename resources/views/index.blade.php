@@ -62,6 +62,8 @@
 {{--    </div>--}}
 
 {{--@endsection--}}
+@extends('layouts.app')
+@section('content')
     <!DOCTYPE html>
 <html>
 <head>
@@ -141,3 +143,4 @@
     });
 </script>
 </html>
+@endsection

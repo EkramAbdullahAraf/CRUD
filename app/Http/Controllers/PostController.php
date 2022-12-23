@@ -13,11 +13,15 @@ use DataTables;
 
 class PostController extends Controller
 {
-
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
     public $post;
 
     public function __construct(IPostRepository $post)
     {
+        $this->middleware('auth');
         $this->post = $post;
     }
 
@@ -128,4 +132,5 @@ class PostController extends Controller
         dd("Data Stored");
 
     }
+
 }

@@ -74,7 +74,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Your data here') }}</div>
+                <div class="card-header">{{ __('Welcome') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -87,8 +87,9 @@
 
                 </div>
                 <div>
-                    <button type="" class="btn btn-block btn-primary">
-                        <i class="fa fa-plus"></i> See Table
+                    <button type="button" onclick="window.location='{{ url("posts") }}'"
+                            class="btn btn-block btn-primary">
+                        See the table
                     </button>
                 </div>
             </div>
