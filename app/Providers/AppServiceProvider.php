@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repository\AdminRepository;
+use App\Repository\IAdminRepository;
+use App\Repository\IPostRepository;
+use App\Repository\PostRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(IPostRepository::class, PostRepository::class);
+        $this->app->bind(IAdminRepository::class, AdminRepository::class);
     }
 
     /**
