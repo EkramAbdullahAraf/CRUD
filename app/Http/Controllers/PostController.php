@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Repository\PostRepository;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Http;
 use App\DataTables\postDataTable;
-
-namespace App\Http\Controllers;
-
 use App\Repository\IPostRepository;
+use DataTables;
 
 class PostController extends Controller
 {
@@ -21,24 +21,53 @@ class PostController extends Controller
         $this->post = $post;
     }
 
+//    public function index()
+//    {
+//        // return all posts
+//
+//        $posts = $this->post->getAllPost();
+//
+//        return view('index')->with('posts', $posts);
+//
+//    }
 
-    public function index()
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-        // return all posts
+        if ($request->ajax()) {
+            $data = Post::select('*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
 
-        $posts = $this->post->getAllPosts();
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
 
-        return view('post.index')->with('posts', $posts);
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
 
+        return view('index');
     }
+//    public function index(postDataTable $dataTable)
+//    {
+//        echo $dataTable->render('post');
+//    }
 
-    public function show($id)
-    {
-        // get single post
 
-        $post = $this->post->getSinglePost($id);
-        return view('post.show')->with('post', $post);
-    }
+//    public function show($id)
+//    {
+//        // get single post
+//
+//        $post = $this->post->getSinglePost($id);
+//        return view('post.show')->with('post', $post);
+//    }
 
 
     public function create()

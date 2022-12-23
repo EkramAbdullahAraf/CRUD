@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-interface IProductRepository
+interface IPostRepository
 {
 
     public function getAllPost();

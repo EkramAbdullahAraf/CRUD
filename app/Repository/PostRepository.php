@@ -7,7 +7,7 @@ use App\Models\Post;
 class PostRepository implements IPostRepository
 {
 
-    public function getAllProducts()
+    public function getAllPost()
     {
         return post::all();
     }
@@ -35,7 +35,7 @@ class PostRepository implements IPostRepository
 
     }
 
-    public function editProduct($id)
+    public function editPost($id)
     {
         return Post::find($id);
     }

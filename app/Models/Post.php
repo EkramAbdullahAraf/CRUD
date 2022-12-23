@@ -32,4 +32,12 @@ class post extends Model
         'completed'
     ];
 
+    public static function find($id)
+    {
+    }
+
+    public static function of($data)
+    {
+    }
+
 }
