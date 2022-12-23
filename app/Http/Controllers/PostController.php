@@ -13,10 +13,6 @@ use DataTables;
 
 class PostController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
     public $post;
 
     public function __construct(IPostRepository $post)
@@ -57,19 +53,6 @@ class PostController extends Controller
 
         return view('index');
     }
-//    public function index(postDataTable $dataTable)
-//    {
-//        echo $dataTable->render('post');
-//    }
-
-
-//    public function show($id)
-//    {
-//        // get single post
-//
-//        $post = $this->post->getSinglePost($id);
-//        return view('post.show')->with('post', $post);
-//    }
 
 
     public function create()
