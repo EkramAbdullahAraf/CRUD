@@ -49,9 +49,7 @@ class PostController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-
-                    return $btn;
+                    return '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -125,11 +123,11 @@ class PostController extends Controller
 
 
             );
+            return '<a href="/posts" class="btn btn-block btn-primary" >Fetched, GO BACK </a>';
         }
 
-
         //print_r($data);
-        dd("Data Stored");
+        dd('Fetched');
 
     }
 

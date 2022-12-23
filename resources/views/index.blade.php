@@ -79,7 +79,12 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 </head>
 <body>
-
+<div>
+    <button type="button" onclick="window.location='{{ url("store-data") }}'"
+            class="btn btn-block btn-primary">
+        Fetch Data
+    </button>
+</div>
 <div class="container">
     <h1>Posts<br/> From todo api</h1>
     <table class="table table-bordered data-table">
