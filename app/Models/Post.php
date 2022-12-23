@@ -9,10 +9,27 @@ class post extends Model
 {
     use HasFactory;
 
+    /**
+     * @var mixed
+     */
+    public $userId;
+    /**
+     * @var mixed
+     */
+    public $id;
+    /**
+     * @var mixed
+     */
+    public $title;
+    /**
+     * @var mixed
+     */
+    public $completed;
     protected $fillable = [
         'userId',
         'id',
         'title',
         'completed'
     ];
+
 }

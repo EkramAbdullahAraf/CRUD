@@ -7,12 +7,70 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Http;
 use App\DataTables\postDataTable;
 
+namespace App\Http\Controllers;
+
+use App\Repository\IPostRepository;
+
 class PostController extends Controller
 {
-    //
-    public function index(postDataTable $dataTable)
+
+    public $post;
+
+    public function __construct(IPostRepository $post)
     {
-        echo $dataTable->render('post');
+        $this->post = $post;
+    }
+
+
+    public function index()
+    {
+        // return all posts
+
+        $posts = $this->post->getAllPosts();
+
+        return view('post.index')->with('posts', $posts);
+
+    }
+
+    public function show($id)
+    {
+        // get single post
+
+        $post = $this->post->getSinglePost($id);
+        return view('post.show')->with('post', $post);
+    }
+
+
+    public function create()
+    {
+
+        // create page
+        return view('post.create');
+    }
+
+
+    public function edit($id)
+    {
+        $post = $this->post->editPost($id);
+        return view('post.edit')->with('post', $post);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+
+        // validate and store data
+        $request->validate([
+            'useId' => 'required',
+            'completed' => 'required'
+        ]);
+
+        $data = $request->all();
+
+        $this->post->updatePost($id, $data);
+
+        return redirect('/posts');
+
     }
 
     public function store()
@@ -41,7 +99,4 @@ class PostController extends Controller
         dd("Data Stored");
 
     }
-
-
 }
-
